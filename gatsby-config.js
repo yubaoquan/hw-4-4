@@ -29,6 +29,15 @@ module.exports = {
       },
     },
     'gatsby-plugin-gatsby-cloud',
+    {
+      resolve: 'gatsby-plugin-alias-imports',
+      options: {
+        alias: {
+          '@': 'src',
+        },
+        extensions: [],
+      },
+    },
 
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline

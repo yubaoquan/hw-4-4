@@ -6,7 +6,7 @@ module.exports = {
     node: true,
   },
   extends: [
-    'airbnb-typescript/base',
+    'airbnb-typescript',
     'plugin:react/recommended',
   ],
   parserOptions: {
@@ -21,6 +21,16 @@ module.exports = {
     'react',
     '@typescript-eslint',
   ],
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [
+          ['@', './src'],
+        ],
+        extensions: ['.tsx'],
+      },
+    },
+  },
   rules: {
     'no-console': 'off',
     'no-continue': 'off',
@@ -28,12 +38,14 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'no-loop-func': 'off',
     'brace-style': ['error', '1tbs'],
-    'import/extensions': ['error', 'always'],
+    'import/extensions': ['error', 'ignorePackages', { tsx: 'never' }],
     'no-param-reassign': ['error', { props: false }],
     'max-statements-per-line': ['error', { max: 1 }],
-    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', 'tsx'] }],
     'react/no-unescaped-entities': 'off',
     'react/react-in-jsx-scope': 'off',
+    'react/require-default-props': 'off',
+    'react/jsx-props-no-spreading': 'off',
 
     'prefer-destructuring': [
       'error',
