@@ -33,6 +33,8 @@ module.exports = {
     },
   },
   rules: {
+    'no-extra-parens': 'off',
+    '@typescript-eslint/no-extra-parens': ['error'],
     'no-console': 'off',
     'no-continue': 'off',
     'consistent-return': 'off',
@@ -48,6 +50,7 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'react/require-default-props': 'off',
     'react/jsx-props-no-spreading': 'off',
+    'react/jsx-max-props-per-line': ['error', { maximum: 1, when: 'multiline' }],
     '@typescript-eslint/no-use-before-define': ['error', { ignoreTypeReferences: false }],
     'prefer-destructuring': [
       'error',

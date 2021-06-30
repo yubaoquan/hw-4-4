@@ -62,8 +62,6 @@ const useEditSite = () => {
     },
   };
 
-  const [expand, setExpand] = useState(true);
-
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const render: React.FC<SiteEditProps> = ({
@@ -77,6 +75,9 @@ const useEditSite = () => {
           .required('请输入网站地址'),
       }),
       onSubmit(values) {
+        // 这里先close再更新状态, 否则更新状态再onClose, 会报错
+        // https://stackoverflow.com/questions/66597999/cant-perform-a-react-state-update-with-formik-on-form-submit
+        onClose();
         onSubmit(values);
       },
     });
@@ -86,11 +87,15 @@ const useEditSite = () => {
       formik.resetForm();
     };
 
+    const [expand, setExpand] = useState(false);
+
     const handleOverlayClick = () => {
-      console.info('overlay click');
+      setExpand(true);
+      setTimeout(() => {
+        setExpand(false);
+      }, 80);
     };
 
-    // transform="scale(1.2, 1.2)"
     return (
       <Modal
         isOpen={isOpen}
@@ -101,7 +106,10 @@ const useEditSite = () => {
         isCentered
       >
         <ModalOverlay />
-        <ModalContent color="tomato" transform="scale(1.5, 1.5)!important">
+        <ModalContent
+          transition="transform 80ms"
+          transform={expand ? 'scale(1.02, 1.02)!important' : 'scale(1, 1)!important'}
+        >
           <ModalHeader
             fontSize="15px"
             fontWeight="normal"

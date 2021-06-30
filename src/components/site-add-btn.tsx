@@ -3,7 +3,10 @@ import { Avatar, Text, Flex } from '@chakra-ui/react';
 import { IoMdAdd } from 'react-icons/io';
 import useSiteEdit from './site-edit';
 
-const SiteBtn: React.FC = () => {
+interface Props {
+  addSite: (site: any) => void
+}
+const SiteBtn: React.FC<Props> = ({ addSite }: Props) => {
   const containerStyle: any = {
     w: '112px',
     h: '112px',
@@ -29,7 +32,7 @@ const SiteBtn: React.FC = () => {
   const { render: SiteForm, showSiteForm } = useSiteEdit();
 
   const handleAdd = (form: any) => {
-    console.info('handleAdd', form);
+    addSite(form);
   };
 
   return (

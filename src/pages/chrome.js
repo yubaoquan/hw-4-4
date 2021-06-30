@@ -12,6 +12,7 @@ import { StaticImage } from 'gatsby-plugin-image';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { IoMdMic } from 'react-icons/io';
 import Seo from '@/components/seo.js';
+import { useState } from 'react';
 
 import SiteBtns from '@/components/site-btns';
 
@@ -20,15 +21,15 @@ const ChromePage = () => {
 
   const inputHeight = '44px';
   const myGray = '#969696';
-  const sites = [{
+  const [sites, setSites] = useState([{
     icon: '1',
     title: '百度一下 你就知道',
     url: 'https://www.baidu.com/',
-  }, {
-    icon: '11',
-    title: '22',
-    url: '33',
-  }];
+  }]);
+
+  const addSite = (site) => {
+    setSites([...sites, site]);
+  };
 
   return (
     <>
@@ -80,7 +81,7 @@ const ChromePage = () => {
           </InputGroup>
         </Flex>
 
-        <SiteBtns items={sites} />
+        <SiteBtns items={sites} addSite={addSite} />
       </Box>
     </>
   );
