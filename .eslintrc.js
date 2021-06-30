@@ -6,20 +6,21 @@ module.exports = {
     node: true,
   },
   extends: [
-    'airbnb-typescript',
     'plugin:react/recommended',
+    'airbnb-typescript',
+    'plugin:import/recommended',
+    'plugin:import/typescript',
   ],
   parserOptions: {
     project: './tsconfig.json',
-    ecmaFeatures: {
-      jsx: true,
-    },
+    ecmaFeatures: { jsx: true },
     ecmaVersion: 12,
     sourceType: 'module',
   },
   plugins: [
     'react',
     '@typescript-eslint',
+    'import',
   ],
   settings: {
     'import/resolver': {
@@ -37,6 +38,7 @@ module.exports = {
     'consistent-return': 'off',
     'import/prefer-default-export': 'off',
     'no-loop-func': 'off',
+    '@typescript-eslint/no-loop-func': 'off',
     'brace-style': ['error', '1tbs'],
     'import/extensions': ['error', 'ignorePackages', { tsx: 'never' }],
     'no-param-reassign': ['error', { props: false }],
@@ -46,12 +48,18 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'react/require-default-props': 'off',
     'react/jsx-props-no-spreading': 'off',
-
+    '@typescript-eslint/no-use-before-define': ['error', { ignoreTypeReferences: false }],
     'prefer-destructuring': [
       'error',
       {
-        VariableDeclarator: { array: false, object: true },
-        AssignmentExpression: { array: false, object: true },
+        VariableDeclarator: {
+          array: false,
+          object: true,
+        },
+        AssignmentExpression: {
+          array: false,
+          object: true,
+        },
       },
       { enforceForRenamedProperties: false },
     ],
@@ -75,6 +83,18 @@ module.exports = {
       { blankLine: 'always', prev: 'import', next: '*' },
       { blankLine: 'any', prev: 'import', next: 'import' },
       { blankLine: 'any', prev: 'export', next: 'export' },
+    ],
+    '@typescript-eslint/type-annotation-spacing': ['error',
+      {
+        after: true,
+        before: false,
+        overrides: {
+          arrow: {
+            after: true,
+            before: true,
+          },
+        },
+      },
     ],
   },
 };

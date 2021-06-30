@@ -22,8 +22,8 @@ const ChromePage = () => {
   const myGray = '#969696';
   const sites = [{
     icon: '1',
-    title: '2',
-    url: '3',
+    title: '百度一下 你就知道',
+    url: 'https://www.baidu.com/',
   }, {
     icon: '11',
     title: '22',
@@ -55,7 +55,7 @@ const ChromePage = () => {
         </Box>
 
         <Flex mt="38px" mb="16px" justify="center">
-          <InputGroup w="560px" borderRadius="22px">
+          <InputGroup w="560px" borderRadius="22px" bgColor="#fff">
             <InputLeftElement h={inputHeight} w="52px" pointerEvents="none">
               <Icon as={AiOutlineSearch} color={myGray} />
             </InputLeftElement>

@@ -5,6 +5,7 @@ module.exports = {
     author: '@gatsbyjs',
   },
   plugins: [
+    '@chakra-ui/gatsby-plugin',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-image',
     {

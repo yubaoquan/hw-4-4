@@ -1,7 +1,12 @@
 import * as React from 'react';
-import { Center, Wrap, WrapItem } from '@chakra-ui/react';
+import {
+  Center,
+  Wrap,
+  WrapItem,
+} from '@chakra-ui/react';
 
 import SiteBtn, { SiteItem } from './site-btn';
+import AddBtn from './site-add-btn';
 
 interface Props {
   items: SiteItem[]
@@ -19,6 +24,9 @@ const SiteBtns: React.FC<Props> = ({ items }: Props) => {
       <Center>
         <Wrap>
           { items.map((item) => <WrapItem key={item.url}><SiteBtn {...item} /></WrapItem>) }
+        </Wrap>
+        <Wrap>
+          <AddBtn />
         </Wrap>
       </Center>
     );
