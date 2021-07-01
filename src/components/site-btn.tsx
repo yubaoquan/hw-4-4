@@ -1,18 +1,19 @@
 import * as React from 'react';
 import {
   Avatar,
-  Text,
-  Link,
   Flex,
   Icon,
+  Image,
+  Link,
   Menu,
   MenuButton,
-  MenuList,
   MenuItem,
+  MenuList,
+  Text,
 } from '@chakra-ui/react';
 
 import { FiMoreVertical } from 'react-icons/fi';
-import useSiteEdit from './site-edit';
+import { isIp, removeProtocol } from '@/utils/regexp';
 
 export interface SiteItem {
   icon?: string,
@@ -20,76 +21,90 @@ export interface SiteItem {
   url: string,
 }
 
-const SiteBtn: React.FC<SiteItem> = ({ icon, title, url }: SiteItem) => {
-  const linkStyle = {
+interface SiteBtnProps {
+  icon?: string,
+  title: string,
+  url: string,
+  onDelete: () => void,
+  onEdit: () => void,
+}
+
+const avatarContainerStyle = {
+  w: '48px',
+  h: '48px',
+  borderRadius: '50%',
+  justify: 'center',
+  align: 'center',
+  bgColor: 'rgb(25, 25, 25)',
+  mt: '16px',
+};
+
+const linkStyle = {
+  textDecoration: 'none',
+  _hover: {
     textDecoration: 'none',
-    _hover: {
-      textDecoration: 'none',
-    },
-    _focus: {
-      outline: 0,
-    },
-  };
+  },
+  _focus: {
+    outline: 0,
+  },
+};
 
-  const containerStyle: any = {
-    w: '112px',
-    h: '112px',
-    direction: 'column',
-    align: 'center',
-    justify: 'flex-start',
-    borderRadius: '4px',
+const containerStyle: any = {
+  w: '112px',
+  h: '112px',
+  direction: 'column',
+  align: 'center',
+  justify: 'flex-start',
+  borderRadius: '4px',
 
-    position: 'relative',
-    _hover: {
-      bgColor: 'rgba(255, 255, 255, .1)',
-    },
-  };
+  position: 'relative',
+  _hover: {
+    bgColor: 'rgba(255, 255, 255, .1)',
+  },
+};
 
-  const menuBtnStyle: any = {
-    display: 'none',
-    position: 'absolute',
-    right: '2px',
-    top: '4px',
-    bgColor: 'transparent',
-    borderRadius: '50%',
-    _hover: { bgColor: 'rgba(32, 33, 36, 0.16)' },
+const menuBtnStyle: any = {
+  display: 'none',
+  position: 'absolute',
+  right: '2px',
+  top: '4px',
+  bgColor: 'transparent',
+  borderRadius: '50%',
+  _hover: { bgColor: 'rgba(32, 33, 36, 0.16)' },
 
-    // https://github.com/chakra-ui/chakra-ui/discussions/2386
-    _groupHover: { display: 'block' },
-  };
+  // https://github.com/chakra-ui/chakra-ui/discussions/2386
+  _groupHover: { display: 'block' },
+};
 
-  const moreBtnStyle = {
-    color: '#fff',
-    w: '28px',
-    h: '28px',
-    p: '5px',
-  };
+const moreBtnStyle = {
+  color: '#fff',
+  w: '28px',
+  h: '28px',
+  p: '5px',
+};
 
-  const textStyle: any = {
-    mt: '6px',
-    p: '2px 8px',
-    whiteSpace: 'nowrap',
-    color: 'rgba(144, 210, 224, 1)',
-    fontSize: '13px',
-    width: '100%',
-    textOverflow: 'ellipsis',
-    overflow: 'hidden',
-  };
+const textStyle: any = {
+  mt: '6px',
+  p: '2px 8px',
+  whiteSpace: 'nowrap',
+  color: 'rgba(144, 210, 224, 1)',
+  fontSize: '13px',
+  width: '100%',
+  textOverflow: 'ellipsis',
+  overflow: 'hidden',
+};
 
-  const { render: SiteForm, showSiteForm } = useSiteEdit();
-
+const SiteBtn: React.FC<SiteBtnProps> = ({
+  icon, title, url, onDelete, onEdit,
+}: SiteBtnProps) => {
   const handleLinkClick = (e: React.MouseEvent) => {
     const { nodeName } = e.target as Element;
     if (nodeName === 'BUTTON') e.preventDefault();
   };
 
-  const handleRemoveClick = () => {
-    console.info('remove this site');
-  };
-
-  const handleEditConfirm = (form: any) => {
-    console.info('handle update', form);
-  };
+  const domain = removeProtocol(url);
+  const urlIsIp = isIp(domain.slice(0, domain.length - 1));
+  const shouldShowIcon = !urlIsIp && icon;
 
   return (
     <>
@@ -100,21 +115,26 @@ const SiteBtn: React.FC<SiteItem> = ({ icon, title, url }: SiteItem) => {
               <Icon
                 as={FiMoreVertical}
                 aria-label="more"
-                {...moreBtnStyle}
                 title="More actions"
+                {...moreBtnStyle}
               />
             </MenuButton>
             <MenuList fontSize="13px" w="128px">
-              <MenuItem onClick={showSiteForm}>Edit shortcut</MenuItem>
-              <MenuItem onClick={handleRemoveClick}>Remove</MenuItem>
+              <MenuItem onClick={onEdit}>Edit shortcut</MenuItem>
+              <MenuItem onClick={onDelete}>Remove</MenuItem>
             </MenuList>
           </Menu>
 
-          <Avatar name={title} src={icon} size="md" bg="rgba(25, 25, 25, 1)" mt="16px" />
+          <Flex {...avatarContainerStyle}>
+            {
+              shouldShowIcon
+                ? <Image src={icon} w="24px" h="24px" />
+                : <Avatar name={urlIsIp ? 'I P' : url} size="xs" />
+            }
+          </Flex>
           <Text {...textStyle}>{title}</Text>
         </Flex>
       </Link>
-      <SiteForm isEdit title={title} url={url} onSubmit={handleEditConfirm} />
     </>
   );
 };

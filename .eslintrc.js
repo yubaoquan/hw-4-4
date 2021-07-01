@@ -28,7 +28,7 @@ module.exports = {
         map: [
           ['@', './src'],
         ],
-        extensions: ['.tsx'],
+        extensions: ['.tsx', '.ts'],
       },
     },
   },
@@ -42,7 +42,7 @@ module.exports = {
     'no-loop-func': 'off',
     '@typescript-eslint/no-loop-func': 'off',
     'brace-style': ['error', '1tbs'],
-    'import/extensions': ['error', 'ignorePackages', { tsx: 'never' }],
+    'import/extensions': 'off',
     'no-param-reassign': ['error', { props: false }],
     'max-statements-per-line': ['error', { max: 1 }],
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', 'tsx'] }],
