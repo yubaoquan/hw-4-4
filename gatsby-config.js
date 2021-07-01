@@ -8,6 +8,9 @@ module.exports = {
     '@chakra-ui/gatsby-plugin',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-image',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
+    'gatsby-plugin-gatsby-cloud',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -15,8 +18,6 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -29,7 +30,6 @@ module.exports = {
         icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
       },
     },
-    'gatsby-plugin-gatsby-cloud',
     {
       resolve: 'gatsby-plugin-alias-imports',
       options: {
@@ -43,5 +43,16 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    {
+      resolve: 'gatsby-source-strapi',
+      options: {
+        apiURL: 'http://106.75.153.180:1337',
+        collectionTypes: [
+          'project',
+          'journal',
+        ],
+        queryLimit: 100,
+      },
+    },
   ],
 };
