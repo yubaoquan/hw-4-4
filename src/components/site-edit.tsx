@@ -127,19 +127,23 @@ const useEditSite = () => {
       }, 80);
     };
 
+    const duplicated = urlDuplicated();
+
+    const submitDisable = !formik.values.url || duplicated;
+
     return (
       <Modal
-        isOpen={isOpen}
-        onClose={handleClose}
-        blockScrollOnMount={false}
-        closeOnOverlayClick={false}
-        onOverlayClick={handleOverlayClick}
+        isOpen={ isOpen }
+        onClose={ handleClose }
+        blockScrollOnMount={ false }
+        closeOnOverlayClick={ false }
+        onOverlayClick={ handleOverlayClick }
         isCentered
       >
         <ModalOverlay />
         <ModalContent
           transition="transform 80ms"
-          transform={expand ? 'scale(1.02, 1.02)!important' : 'scale(1, 1)!important'}
+          transform={ expand ? 'scale(1.02, 1.02)!important' : 'scale(1, 1)!important' }
         >
           <ModalHeader
             fontSize="15px"
@@ -147,18 +151,18 @@ const useEditSite = () => {
             color="rgb(32, 33, 36)"
             p="20px 20px 16px"
           >
-            {isEdit ? 'Edit shortcut' : 'Add shortcut'}
+            { isEdit ? 'Edit shortcut' : 'Add shortcut' }
           </ModalHeader>
           <ModalBody p="0 20px">
-            <form onSubmit={formik.handleSubmit}>
+            <form onSubmit={ formik.handleSubmit }>
               <FormControl id="title" mb="20px">
-                <FormLabel {...labelStyle}>Name</FormLabel>
-                <Input {...formik.getFieldProps('title')} {...inputStyle} />
+                <FormLabel { ...labelStyle }>Name</FormLabel>
+                <Input { ...formik.getFieldProps('title') } { ...inputStyle } />
               </FormControl>
 
-              <FormControl id="url" mb="30px" isInvalid={urlDuplicated()}>
-                <FormLabel {...labelStyle}>URL</FormLabel>
-                <Input {...formik.getFieldProps('url')} {...inputStyle} />
+              <FormControl id="url" mb="30px" isInvalid={ duplicated }>
+                <FormLabel { ...labelStyle }>URL</FormLabel>
+                <Input { ...formik.getFieldProps('url') } { ...inputStyle } />
                 <FormErrorMessage fontSize="10px">Shortcut already exists</FormErrorMessage>
               </FormControl>
             </form>
@@ -167,8 +171,8 @@ const useEditSite = () => {
           <ModalFooter p="24px 16px 16px">
             <Button
               size="sm"
-              mr={3}
-              onClick={handleClose}
+              mr={ 3 }
+              onClick={ handleClose }
               variant="outline"
               p="8px 16px"
               fontSize="13px"
@@ -180,9 +184,9 @@ const useEditSite = () => {
             <Button
               size="sm"
               colorScheme="blue"
-              isDisabled={!formik.values.url}
-              {...confirmBtnStyle}
-              onClick={formik.handleSubmit as any}
+              isDisabled={ submitDisable }
+              { ...confirmBtnStyle }
+              onClick={ formik.handleSubmit as any }
             >
               Done
             </Button>

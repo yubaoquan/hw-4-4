@@ -52,22 +52,22 @@ const SiteBtns: FC<Props> = ({
   const renderItems = (list: SiteItem[], withAddBtn = false) => (
     <>
       <Wrap>
-        {list.map((item, index) => (
-          <WrapItem key={item.url}>
+        { list.map((item, index) => (
+          <WrapItem key={ item.url }>
             <SiteBtn
-              {...item}
-              onEdit={() => handleEditClick(item, index)}
-              onDelete={() => deleteSite(index)}
+              { ...item }
+              onEdit={ () => handleEditClick(item, index) }
+              onDelete={ () => deleteSite(index) }
             />
           </WrapItem>
-        ))}
+        )) }
 
       </Wrap>
-      {withAddBtn && (
+      { withAddBtn && (
       <Wrap>
-        <AddBtn onClick={handleAddClick} />
+        <AddBtn onClick={ handleAddClick } />
       </Wrap>
-      )}
+      ) }
     </>
   );
 
@@ -78,11 +78,11 @@ const SiteBtns: FC<Props> = ({
 
   const siteForm = (
     <SiteForm
-      isEdit={isEdit}
-      title={currentItem.title}
-      url={currentItem.url}
-      urls={items.map((item) => item.url)}
-      onSubmit={onSubmit}
+      isEdit={ isEdit }
+      title={ currentItem.title }
+      url={ currentItem.url }
+      urls={ items.filter((item, index) => index !== curIndex).map((item) => item.url) }
+      onSubmit={ onSubmit }
     />
   );
 
@@ -109,8 +109,8 @@ const SiteBtns: FC<Props> = ({
   return (
     <>
       <Box>
-        <Center>{renderItems(items.slice(0, cutPoint))}</Center>
-        <Center>{renderItems(items.slice(cutPoint), showAddBtn)}</Center>
+        <Center>{ renderItems(items.slice(0, cutPoint)) }</Center>
+        <Center>{ renderItems(items.slice(cutPoint), showAddBtn) }</Center>
       </Box>
       { siteForm }
     </>

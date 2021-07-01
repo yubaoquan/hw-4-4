@@ -108,31 +108,31 @@ const SiteBtn: React.FC<SiteBtnProps> = ({
 
   return (
     <>
-      <Link href={url} {...linkStyle} title={title} onClick={handleLinkClick}>
-        <Flex {...containerStyle} role="group">
+      <Link href={ url } { ...linkStyle } title={ title } onClick={ handleLinkClick }>
+        <Flex { ...containerStyle } role="group">
           <Menu placement="left-start">
-            <MenuButton {...menuBtnStyle}>
+            <MenuButton { ...menuBtnStyle }>
               <Icon
-                as={FiMoreVertical}
+                as={ FiMoreVertical }
                 aria-label="more"
                 title="More actions"
-                {...moreBtnStyle}
+                { ...moreBtnStyle }
               />
             </MenuButton>
             <MenuList fontSize="13px" w="128px">
-              <MenuItem onClick={onEdit}>Edit shortcut</MenuItem>
-              <MenuItem onClick={onDelete}>Remove</MenuItem>
+              <MenuItem onClick={ onEdit }>Edit shortcut</MenuItem>
+              <MenuItem onClick={ onDelete }>Remove</MenuItem>
             </MenuList>
           </Menu>
 
-          <Flex {...avatarContainerStyle}>
+          <Flex { ...avatarContainerStyle }>
             {
               shouldShowIcon
-                ? <Image src={icon} w="24px" h="24px" />
-                : <Avatar name={urlIsIp ? 'I P' : url} size="xs" />
+                ? <Image src={ icon } w="24px" h="24px" />
+                : <Avatar name={ urlIsIp ? 'I P' : url } size="xs" />
             }
           </Flex>
-          <Text {...textStyle}>{title}</Text>
+          <Text { ...textStyle }>{ title }</Text>
         </Flex>
       </Link>
     </>

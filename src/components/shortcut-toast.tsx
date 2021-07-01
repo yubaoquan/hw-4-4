@@ -41,10 +41,10 @@ const ShortcutToast: React.FC<Props> = ({ notifyType, onUndo, onRestore }: Props
   };
 
   return (
-    <Box {...containerStyle}>
-      <Text as="span" color="#fff" fontSize="13px">{text}</Text>
-      <Button onClick={onUndo} mx="32px" p="8px" {...btnStyle}>Undo</Button>
-      <Button onClick={onRestore} p="8px" {...btnStyle}>Restore default shortcuts</Button>
+    <Box { ...containerStyle }>
+      <Text as="span" color="#fff" fontSize="13px">{ text }</Text>
+      <Button onClick={ onUndo } mx="32px" p="8px" { ...btnStyle }>Undo</Button>
+      <Button onClick={ onRestore } p="8px" { ...btnStyle }>Restore default shortcuts</Button>
     </Box>
   );
 };

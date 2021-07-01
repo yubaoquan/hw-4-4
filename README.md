@@ -20,4 +20,4 @@
 7. 修改结果与修改前相同, 不弹 toast
 8. google doodle 图片链接
 9. 加载网站 favicon
-10. url 重复时报错提示
+10. url 重复时报错提示, 无法添加
