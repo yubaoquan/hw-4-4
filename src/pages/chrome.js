@@ -10,13 +10,12 @@ import {
   Icon,
 } from '@chakra-ui/react';
 import { StaticImage } from 'gatsby-plugin-image';
+import { useState, useRef } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { IoMdMic } from 'react-icons/io';
 import Seo from '@/components/seo.js';
-import { useState, useRef } from 'react';
-
-import SiteBtns from '@/components/site-btns';
 import ShortcutToast from '@/components/shortcut-toast';
+import SiteBtns from '@/components/site-btns';
 
 const doodleBoxStyle = {
   bgColor: 'rgba(94, 102, 104, 1)',

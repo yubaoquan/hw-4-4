@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {
   Modal,
   ModalOverlay,
@@ -14,9 +13,12 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import { useFormik } from 'formik';
+import { Address4 } from 'ip-address';
+import * as React from 'react';
 import * as Yup from 'yup';
 import { REG, addProtocol } from '@/utils/regexp';
-import { Address4 } from 'ip-address';
+
+// import validUrl from 'valid-url';
 
 interface SiteEditProps {
   isEdit?: boolean,
@@ -91,7 +93,29 @@ const useEditSite = () => {
       validationSchema: Yup.object({
         url: Yup.string()
           .trim()
-          .required('请输入网站地址'),
+          .test({
+            name: 'duplicated',
+            message: 'Shortcut already exists',
+            test: (value = '') => {
+              const finalUrl = getFinalUrl(value);
+              console.info(urls);
+              console.info(finalUrl);
+              return !urls.includes(finalUrl);
+            },
+          })
+          .test({
+            name: 'format-invalid',
+            message: 'Type a valid URL',
+            test: (value = '') => {
+              // const finalUrl = getFinalUrl(value);
+              // return validUrl.isUri(finalUrl);
+
+              if (!REG.number.test(value)) return true; // 不是数字, 不校验
+              const MAX_VALID_IP_INTEGER = 4294967295;
+              return +value <= MAX_VALID_IP_INTEGER;
+            },
+          })
+        ,
       }),
       onSubmit(values) {
         // 这里先close再更新状态, 否则更新状态再onClose, 会报错
@@ -100,18 +124,12 @@ const useEditSite = () => {
 
         const finalUrl = getFinalUrl(values.url);
         const notModified = (values.title === title) && (finalUrl === url);
-
         const icon = `https://s2.googleusercontent.com/s2/favicons?domain_url=${finalUrl}`;
 
         if (notModified) onClose();
         else onSubmit({ title: values.title, url: finalUrl, icon });
       },
     });
-
-    const urlDuplicated = () => {
-      const finalUrl = getFinalUrl(formik.values.url);
-      return urls.includes(finalUrl);
-    };
 
     const handleClose = () => {
       onClose();
@@ -122,14 +140,11 @@ const useEditSite = () => {
 
     const handleOverlayClick = () => {
       setExpand(true);
-      setTimeout(() => {
-        setExpand(false);
-      }, 80);
+      setTimeout(() => setExpand(false), 80);
     };
 
-    const duplicated = urlDuplicated();
-
-    const submitDisable = !formik.values.url || duplicated;
+    const errMsg = formik.errors.url;
+    const submitDisable = !formik.values.url || !!errMsg;
 
     return (
       <Modal
@@ -160,10 +175,10 @@ const useEditSite = () => {
                 <Input { ...formik.getFieldProps('title') } { ...inputStyle } />
               </FormControl>
 
-              <FormControl id="url" mb="30px" isInvalid={ duplicated }>
+              <FormControl id="url" mb="30px" isInvalid={ !!errMsg }>
                 <FormLabel { ...labelStyle }>URL</FormLabel>
                 <Input { ...formik.getFieldProps('url') } { ...inputStyle } />
-                <FormErrorMessage fontSize="10px">Shortcut already exists</FormErrorMessage>
+                <FormErrorMessage fontSize="10px" mt="8px">{ errMsg }</FormErrorMessage>
               </FormControl>
             </form>
           </ModalBody>

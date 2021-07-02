@@ -1,5 +1,5 @@
-import * as React from 'react';
 import { Avatar, Text, Flex } from '@chakra-ui/react';
+import * as React from 'react';
 import { IoMdAdd } from 'react-icons/io';
 
 interface Props {

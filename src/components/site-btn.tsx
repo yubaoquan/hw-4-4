@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {
   Avatar,
   Flex,
@@ -11,7 +10,7 @@ import {
   MenuList,
   Text,
 } from '@chakra-ui/react';
-
+import * as React from 'react';
 import { FiMoreVertical } from 'react-icons/fi';
 import { isIp, removeProtocol } from '@/utils/regexp';
 

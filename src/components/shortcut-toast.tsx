@@ -1,5 +1,5 @@
-import * as React from 'react';
 import { Box, Text, Button } from '@chakra-ui/react';
+import * as React from 'react';
 
 interface Props {
   notifyType: 'edit' | 'add' | 'remove',
