@@ -5,10 +5,10 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import { useStaticQuery, graphql } from 'gatsby';
 import { ChakraProvider, theme } from '@chakra-ui/react';
+import { useStaticQuery, graphql } from 'gatsby';
+import PropTypes from 'prop-types';
+import * as React from 'react';
 import Header from './header.js';
 import './layout.css';
 
@@ -34,16 +34,8 @@ const Layout = ({ children }) => {
         }}
       >
         <main>{children}</main>
-        <footer
-          style={{
-            marginTop: '2rem',
-          }}
-        >
-          ©
-          {' '}
-          {new Date().getFullYear()}
-          , Built with
-          {' '}
+        <footer style={{ marginTop: '2rem' }}>
+          {`© ${new Date().getFullYear()}, Built with `}
           <a href="https://www.gatsbyjs.com">Gatsby</a>
         </footer>
       </div>

@@ -78,9 +78,9 @@ const ChromePage = () => {
       render() {
         return (
           <ShortcutToast
-            notifyType={ notifyType }
-            onUndo={ onUndo }
-            onRestore={ onRestore }
+            notifyType={notifyType}
+            onUndo={onUndo}
+            onRestore={onRestore}
           />
         );
       },
@@ -110,13 +110,13 @@ const ChromePage = () => {
       <Seo title="New Tab" />
       <Box textAlign="center" pt="64px" bgColor="#025A6C" h="100vh">
         <Box>
-          <Link href={ url } isExternal>
-            <Box { ...doodleBoxStyle }>
+          <Link href={url} isExternal>
+            <Box {...doodleBoxStyle}>
               <StaticImage
                 src="../images/dragon.png"
-                width={ 510 }
-                quality={ 95 }
-                formats={ ['AUTO', 'WEBP', 'AVIF'] }
+                width={510}
+                quality={95}
+                formats={['AUTO', 'WEBP', 'AVIF']}
                 alt="big dragon"
               />
             </Box>
@@ -125,23 +125,23 @@ const ChromePage = () => {
 
         <Flex mt="38px" mb="16px" justify="center">
           <InputGroup w="560px" borderRadius="22px" bgColor="#fff">
-            <InputLeftElement h={ inputHeight } w="52px" pointerEvents="none">
-              <Icon as={ AiOutlineSearch } color="#969696" />
+            <InputLeftElement h={inputHeight} w="52px" pointerEvents="none">
+              <Icon as={AiOutlineSearch} color="#969696" />
             </InputLeftElement>
 
-            <Input { ...mainInputStyle } placeholder="Search Google or type a URL" />
+            <Input {...mainInputStyle} placeholder="Search Google or type a URL" />
 
-            <InputRightElement h={ inputHeight } w="44px" cursor="pointer">
-              <Icon as={ IoMdMic } color="skyblue" />
+            <InputRightElement h={inputHeight} w="44px" cursor="pointer">
+              <Icon as={IoMdMic} color="skyblue" />
             </InputRightElement>
           </InputGroup>
         </Flex>
 
         <SiteBtns
-          items={ sites }
-          addSite={ addSite }
-          updateSite={ editSite }
-          deleteSite={ deleteSite }
+          items={sites}
+          addSite={addSite}
+          updateSite={editSite}
+          deleteSite={deleteSite}
         />
       </Box>
     </>

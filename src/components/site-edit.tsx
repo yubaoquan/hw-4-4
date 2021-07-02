@@ -148,17 +148,17 @@ const useEditSite = () => {
 
     return (
       <Modal
-        isOpen={ isOpen }
-        onClose={ handleClose }
-        blockScrollOnMount={ false }
-        closeOnOverlayClick={ false }
-        onOverlayClick={ handleOverlayClick }
+        isOpen={isOpen}
+        onClose={handleClose}
+        blockScrollOnMount={false}
+        closeOnOverlayClick={false}
+        onOverlayClick={handleOverlayClick}
         isCentered
       >
         <ModalOverlay />
         <ModalContent
           transition="transform 80ms"
-          transform={ expand ? 'scale(1.02, 1.02)!important' : 'scale(1, 1)!important' }
+          transform={expand ? 'scale(1.02, 1.02)!important' : 'scale(1, 1)!important'}
         >
           <ModalHeader
             fontSize="15px"
@@ -166,42 +166,42 @@ const useEditSite = () => {
             color="rgb(32, 33, 36)"
             p="20px 20px 16px"
           >
-            { isEdit ? 'Edit shortcut' : 'Add shortcut' }
+            {isEdit ? 'Edit shortcut' : 'Add shortcut'}
           </ModalHeader>
           <ModalBody p="0 20px">
-            <form onSubmit={ formik.handleSubmit }>
+            <form onSubmit={formik.handleSubmit}>
               <FormControl id="title" mb="20px">
-                <FormLabel { ...labelStyle }>Name</FormLabel>
-                <Input { ...formik.getFieldProps('title') } { ...inputStyle } />
+                <FormLabel {...labelStyle}>Name</FormLabel>
+                <Input {...formik.getFieldProps('title')} {...inputStyle} />
               </FormControl>
 
-              <FormControl id="url" mb="30px" isInvalid={ !!errMsg }>
-                <FormLabel { ...labelStyle }>URL</FormLabel>
-                <Input { ...formik.getFieldProps('url') } { ...inputStyle } />
-                <FormErrorMessage fontSize="10px" mt="8px">{ errMsg }</FormErrorMessage>
+              <FormControl id="url" mb="30px" isInvalid={!!errMsg}>
+                <FormLabel {...labelStyle}>URL</FormLabel>
+                <Input {...formik.getFieldProps('url')} {...inputStyle} />
+                <FormErrorMessage fontSize="10px" mt="8px">{errMsg}</FormErrorMessage>
               </FormControl>
             </form>
           </ModalBody>
 
           <ModalFooter p="24px 16px 16px">
             <Button
-              size="sm"
-              mr={ 3 }
-              onClick={ handleClose }
-              variant="outline"
+              mr={3}
               p="8px 16px"
               fontSize="13px"
               fontWeight="500"
               color="rgb(26, 115, 232)"
+              size="sm"
+              variant="outline"
+              onClick={handleClose}
             >
               Cancel
             </Button>
             <Button
               size="sm"
               colorScheme="blue"
-              isDisabled={ submitDisable }
-              { ...confirmBtnStyle }
-              onClick={ formik.handleSubmit as any }
+              {...confirmBtnStyle}
+              isDisabled={submitDisable}
+              onClick={formik.handleSubmit as any}
             >
               Done
             </Button>

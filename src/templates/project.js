@@ -6,9 +6,9 @@ const Project = ({ data }) => {
   const { strapiProject: project } = data;
   return (
     <div>
-      <div>{ project.title }</div>
-      <div>{ project.color }</div>
-      <div>{ project.content }</div>
+      <div>{project.title}</div>
+      <div>{project.color}</div>
+      <div>{project.content}</div>
     </div>
   );
 };

@@ -29,9 +29,9 @@ const textStyle: any = {
 };
 
 const SiteBtn: React.FC<Props> = ({ onClick }: Props) => (
-  <Flex { ...containerStyle } onClick={ onClick }>
-    <Avatar icon={ <IoMdAdd /> } w="48px" h="48px" bg="rgba(25, 25, 25, 1)" color="#fff" mt="16px" />
-    <Text { ...textStyle }>Add shortcut</Text>
+  <Flex {...containerStyle} onClick={onClick}>
+    <Avatar icon={<IoMdAdd />} w="48px" h="48px" bg="rgba(25, 25, 25, 1)" color="#fff" mt="16px" />
+    <Text {...textStyle}>Add shortcut</Text>
   </Flex>
 );
 

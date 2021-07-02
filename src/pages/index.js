@@ -1,7 +1,6 @@
-import { Link as GatsbyLink } from 'gatsby';
 import { Link, Heading, Text } from '@chakra-ui/react';
+import { Link as GatsbyLink } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
-
 import Layout from '@/components/layout.js';
 import Seo from '@/components/seo.js';
 
@@ -13,21 +12,20 @@ const IndexPage = () => (
     <Text fontSize="20px">Now go build something great.alias</Text>
     <StaticImage
       src="../images/gatsby-astronaut.png"
-      width={ 300 }
-      quality={ 95 }
-      formats={ ['AUTO', 'WEBP', 'AVIF'] }
+      width={300}
+      quality={95}
+      formats={['AUTO', 'WEBP', 'AVIF']}
       alt="A Gatsby astronaut"
-      style={ { marginBottom: '1.45rem' } }
+      style={{ marginBottom: '1.45rem' }}
     />
     <p>
-      <Link to="/page-2/" as={ GatsbyLink }>Go to page 2</Link>
-      { ' ' }
+      <Link to="/page-2/" as={GatsbyLink}>Go to page 2</Link>
       <br />
-      <Link to="/using-typescript/" as={ GatsbyLink }>Go to "Using TypeScript"</Link>
+      <Link to="/using-typescript/" as={GatsbyLink}>Go to "Using TypeScript"</Link>
       <br />
-      <Link to="/chrome/" as={ GatsbyLink }>Chrome demo 页</Link>
+      <Link to="/chrome/" as={GatsbyLink}>Chrome demo 页</Link>
       <br />
-      <Link to="/project/Project_1" as={ GatsbyLink }>template demo 页</Link>
+      <Link to="/project/Project_1" as={GatsbyLink}>template demo 页</Link>
     </p>
   </Layout>
 );

@@ -51,22 +51,18 @@ const SiteBtns: FC<Props> = ({
   const renderItems = (list: SiteItem[], withAddBtn = false) => (
     <>
       <Wrap>
-        { list.map((item, index) => (
-          <WrapItem key={ item.url }>
+        {list.map((item, index) => (
+          <WrapItem key={item.url}>
             <SiteBtn
-              { ...item }
-              onEdit={ () => handleEditClick(item, index) }
-              onDelete={ () => deleteSite(index) }
+              {...item}
+              onEdit={() => handleEditClick(item, index)}
+              onDelete={() => deleteSite(index)}
             />
           </WrapItem>
-        )) }
+        ))}
 
       </Wrap>
-      { withAddBtn && (
-      <Wrap>
-        <AddBtn onClick={ handleAddClick } />
-      </Wrap>
-      ) }
+      {withAddBtn && <Wrap><AddBtn onClick={handleAddClick} /></Wrap>}
     </>
   );
 
@@ -77,19 +73,19 @@ const SiteBtns: FC<Props> = ({
 
   const siteForm = (
     <SiteForm
-      isEdit={ isEdit }
-      title={ currentItem.title }
-      url={ currentItem.url }
-      urls={ items.filter((item, index) => index !== curIndex).map((item) => item.url) }
-      onSubmit={ onSubmit }
+      isEdit={isEdit}
+      title={currentItem.title}
+      url={currentItem.url}
+      urls={items.filter((item, index) => index !== curIndex).map((item) => item.url)}
+      onSubmit={onSubmit}
     />
   );
 
   if (items.length < TWO_LINE_MIN_COUNT) {
     return (
       <>
-        <Center>{ renderItems(items, true) }</Center>
-        { siteForm }
+        <Center>{renderItems(items, true)}</Center>
+        {siteForm}
       </>
     );
   }
@@ -108,10 +104,10 @@ const SiteBtns: FC<Props> = ({
   return (
     <>
       <Box>
-        <Center>{ renderItems(items.slice(0, cutPoint)) }</Center>
-        <Center>{ renderItems(items.slice(cutPoint), showAddBtn) }</Center>
+        <Center>{renderItems(items.slice(0, cutPoint))}</Center>
+        <Center>{renderItems(items.slice(cutPoint), showAddBtn)}</Center>
       </Box>
-      { siteForm }
+      {siteForm}
     </>
   );
 };
