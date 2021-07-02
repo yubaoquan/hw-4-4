@@ -21,11 +21,11 @@ import { REG, addProtocol } from '@/utils/regexp';
 // import validUrl from 'valid-url';
 
 interface SiteEditProps {
-  isEdit?: boolean,
-  title?: string,
-  url?: string,
-  urls: string[],
-  onSubmit: (form: any) => void
+  isEdit?: boolean;
+  title?: string;
+  url?: string;
+  urls: string[];
+  onSubmit: (form: any) => void;
 }
 
 const { useState } = React;

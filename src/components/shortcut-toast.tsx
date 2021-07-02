@@ -2,9 +2,9 @@ import { Box, Text, Button } from '@chakra-ui/react';
 import * as React from 'react';
 
 interface Props {
-  notifyType: 'edit' | 'add' | 'remove',
-  onUndo: () => void,
-  onRestore: () => void,
+  notifyType: 'edit' | 'add' | 'remove';
+  onUndo: () => void;
+  onRestore: () => void;
 }
 
 const ShortcutToast: React.FC<Props> = ({ notifyType, onUndo, onRestore }: Props) => {

@@ -15,17 +15,17 @@ import { FiMoreVertical } from 'react-icons/fi';
 import { isIp, removeProtocol } from '@/utils/regexp';
 
 export interface SiteItem {
-  icon?: string,
-  title: string,
-  url: string,
+  icon?: string;
+  title: string;
+  url: string;
 }
 
 interface SiteBtnProps {
-  icon?: string,
-  title: string,
-  url: string,
-  onDelete: () => void,
-  onEdit: () => void,
+  icon?: string;
+  title: string;
+  url: string;
+  onDelete: () => void;
+  onEdit: () => void;
 }
 
 const avatarContainerStyle = {

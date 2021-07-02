@@ -52,6 +52,7 @@ module.exports = {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', 'tsx'] }],
     'react/jsx-max-props-per-line': ['error', { maximum: 1, when: 'multiline' }],
     '@typescript-eslint/no-use-before-define': ['error', { ignoreTypeReferences: false }],
+    '@typescript-eslint/member-delimiter-style': 'error',
     'import/order': ['error', {
       alphabetize: { order: 'asc', caseInsensitive: true },
       groups: [

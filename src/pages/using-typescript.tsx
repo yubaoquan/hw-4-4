@@ -6,8 +6,8 @@ import Seo from '../components/seo.js';
 
 type DataProps = {
   site: {
-    buildTime: string
-  }
+    buildTime: string;
+  };
 };
 
 type ComponentProps = PageProps<DataProps>;

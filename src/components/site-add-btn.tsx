@@ -3,7 +3,7 @@ import * as React from 'react';
 import { IoMdAdd } from 'react-icons/io';
 
 interface Props {
-  onClick: () => void
+  onClick: () => void;
 }
 
 const containerStyle: any = {
