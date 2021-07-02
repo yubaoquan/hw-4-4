@@ -138,4 +138,8 @@ const SiteBtn: React.FC<SiteBtnProps> = ({
   );
 };
 
+SiteBtn.defaultProps = {
+  icon: '',
+};
+
 export default SiteBtn;
