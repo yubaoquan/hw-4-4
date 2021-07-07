@@ -47,6 +47,7 @@ module.exports = {
     'brace-style': ['error', '1tbs'],
     '@typescript-eslint/no-extra-parens': ['error'],
     'no-param-reassign': ['error', { props: false }],
+    'max-len': ['error', { code: 100, tabWidth: 2 }],
     'max-statements-per-line': ['error', { max: 1 }],
     'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx', 'tsx'] }],
     'react/jsx-max-props-per-line': ['error', { maximum: 1, when: 'multiline' }],
