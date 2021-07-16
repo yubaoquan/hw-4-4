@@ -47,18 +47,32 @@ module.exports = {
     'brace-style': ['error', '1tbs'],
     '@typescript-eslint/no-extra-parens': ['error'],
     'no-param-reassign': ['error', { props: false }],
-    'max-len': ['error', { code: 100, tabWidth: 2 }],
+
+    'max-len': ['error', {
+      code: 100,
+      tabWidth: 2,
+      ignoreComments: true,
+      ignoreUrls: true,
+      ignoreStrings: true,
+      ignoreTemplateLiterals: true,
+      ignoreRegExpLiterals: true,
+    }],
+    'object-curly-newline': ['error', {
+      ObjectExpression: { multiline: true },
+      ObjectPattern: { multiline: true },
+      ImportDeclaration: { multiline: true },
+      ExportDeclaration: { multiline: true },
+    }],
     'max-statements-per-line': ['error', { max: 1 }],
     'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx', 'tsx'] }],
     'react/jsx-max-props-per-line': ['error', { maximum: 1, when: 'multiline' }],
     '@typescript-eslint/no-use-before-define': ['error', { ignoreTypeReferences: false }],
     'react/jsx-curly-spacing': ['error', { when: 'never', attributes: true, children: true }],
     '@typescript-eslint/member-delimiter-style': 'error',
+    '@typescript-eslint/prefer-optional-chain': 'error',
     'import/order': ['error', {
       alphabetize: { order: 'asc', caseInsensitive: false },
-      groups: [
-        'builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object',
-      ],
+      groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object'],
     }],
     'prefer-destructuring': [
       'error',
